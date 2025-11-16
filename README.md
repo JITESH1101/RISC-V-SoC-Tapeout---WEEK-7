@@ -779,6 +779,6 @@ if { $rcx_rules_file != "" } {
 
 ---
 
-## ✅ Conclusion: Week 7 Complete!
+##  Conclusion
 
 The BabySoC physical design flow for Week 7 is complete. The OpenROAD-flow-scripts environment was configured, and the chip was successfully processed through synthesis, floorplanning, placement, CTS, and routing. The primary objective was met with the generation of the post-route SPEF file, capturing the real parasitic data essential for signoff-level timing analysis. This concludes the tasks for Week 7, with Week 8 to follow.
