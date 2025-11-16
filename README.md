@@ -757,8 +757,24 @@ When we run our final Static Timing Analysis (known as **post-route STA**), we f
 
 Without a SPEF file, you're just guessing. With it, you *know*.
 
-** To get the RC extraction and generate a spef file we can use the following tcl script
+- To get the RC extraction and generate a spef file we can use the following tcl script
 
+```
+# Extraction
+
+if { $rcx_rules_file != "" } {
+  define_process_corner -ext_model_index 0 X
+  extract_parasitics -ext_model_file $rcx_rules_file
+
+  set spef_file [make_result_file ${design}_${platform}.spef]
+  write_spef $spef_file
+
+  read_spef $spef_file
+} else {
+  # Use global routing based parasitics inlieu of rc extraction
+  estimate_parasitics -global_routing
+}
+```
 
 
 ---
