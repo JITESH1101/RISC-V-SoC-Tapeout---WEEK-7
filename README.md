@@ -49,6 +49,8 @@ yosys -help
 openroad -help
 ```
 
+<img width="3790" height="450" alt="directory" src="https://github.com/user-attachments/assets/16f3cf1a-bdc8-4284-b6ea-c208a3f0b880" />
+
 ---
 
 ## 📂 Part 2: Configuring the BabySoC Project
