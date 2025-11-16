@@ -4,7 +4,7 @@
 
 This task was all about connecting the dots—seeing how the digital logic we write in Verilog (`RTL`) gets translated into a physical, routable layout (`GDSII`) ready for fabrication. It's where the theory of chip design meets the practical reality of layout, timing, and parasitic extraction.
 
-## 🎯 The Objective: A Full Physical Design Flow
+##  The Objective: A Full Physical Design Flow
 
 Up to this point, many steps like synthesis, STA, and layout were separate exercises. The goal of this task was to integrate them into one continuous flow, just like in a real-world ASIC design process.
 
@@ -21,7 +21,7 @@ My mission was to:
 
 ---
 
-## 🛠️ Part 1: Setting Up the Environment (OpenROAD)
+##  Part 1: Setting Up the Environment (OpenROAD)
 
 First things first, I had to get the toolchain (ORFS) installed and built. This flow automates the entire process, using a set of open-source tools like Yosys, OpenROAD, and Magic.
 
@@ -68,7 +68,7 @@ make
 
 ---
 
-## 📂 Part 2: Configuring the BabySoC Project
+##  Part 2: Configuring the BabySoC Project
 
 This was the most important setup step. The OpenROAD flow needs to know *where* our design files are and *how* to build them for our target technology (Skywater 130nm, or `sky130hd`).
 
@@ -136,7 +136,7 @@ export SKIP_GATE_CLONING = 1
 
 ---
 
-## 🗺️ Part 3: Running the Full Flow (The Fun Part!)
+##  Part 3: Running the Full Flow (The Fun Part!)
 
 With the setup complete, all I had to do was `cd` into the `flow/` directory and run the `make` commands for each stage. The `DESIGN_CONFIG` variable points to the `config.mk` file we just made.
 
@@ -741,7 +741,7 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_route
 
 ---
 
-## ⚡ Part 4: What is SPEF?
+##  Part 4: What is SPEF?
 
 The final step of the flow, and a key goal of this week, was to generate the **SPEF (Standard Parasitic Exchange Format)** file.
 
