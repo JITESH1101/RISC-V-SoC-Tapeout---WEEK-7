@@ -51,6 +51,21 @@ openroad -help
 
 <img width="3790" height="450" alt="directory" src="https://github.com/user-attachments/assets/16f3cf1a-bdc8-4284-b6ea-c208a3f0b880" />
 
+To verify the installation , enter the following code to run the entire automated flow to check if the design works.
+
+```
+source ./env.sh
+yosys -help
+openroad -help
+cd flow
+make
+```
+
+<img width="3986" height="2302" alt="make_openroad_flow_scripts" src="https://github.com/user-attachments/assets/f43f6aff-a4ca-469b-a8c8-5608215c79b8" />
+
+<img width="3975" height="2499" alt="gui_final" src="https://github.com/user-attachments/assets/70e9f7fc-168a-4f2c-8219-d974b4cbed6b" />
+
+
 ---
 
 ## 📂 Part 2: Configuring the BabySoC Project
@@ -126,10 +141,36 @@ export SKIP_GATE_CLONING = 1
 With the setup complete, all I had to do was `cd` into the `flow/` directory and run the `make` commands for each stage. The `DESIGN_CONFIG` variable points to the `config.mk` file we just made.
 
 ### 1. Synthesis
-This step (re-)runs Yosys to turn the Verilog into a gate-level netlist.
+
+This step runs Yosys to turn the Verilog into a gate-level netlist.
 ```bash
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 ```
+The following is the synthesis log
+
+<img width="3964" height="2506" alt="synthesis_1" src="https://github.com/user-attachments/assets/427da15f-b2f5-4e9c-97dc-d8d3b09f897f" />
+<img width="3964" height="2506" alt="synthesis_2" src="https://github.com/user-attachments/assets/4976dff9-1a8c-44af-a000-ed14f8f54e9c" />
+<img width="3964" height="2506" alt="synthesis_3" src="https://github.com/user-attachments/assets/0554caa2-6e53-4302-8316-92dac7c2aadc" />
+<img width="3964" height="2506" alt="synthesis_4" src="https://github.com/user-attachments/assets/545f21cf-2a93-4c24-83a8-df8bf775a084" />
+<img width="3964" height="2506" alt="synthesis_5" src="https://github.com/user-attachments/assets/b0da1aea-46f2-48cc-8be7-41af232f4585" />
+<img width="3964" height="754" alt="synthesis_6" src="https://github.com/user-attachments/assets/54e624e1-cdf3-4781-b21e-e948cde9c882" />
+
+Now the netlist generated is as follows
+
+<img width="3978" height="2560" alt="netlist" src="https://github.com/user-attachments/assets/f6a260db-e360-43f5-8086-bcd3a4b3cb01" />
+<img width="3978" height="2560" alt="netlist_1" src="https://github.com/user-attachments/assets/b5cac365-fe9a-402d-b71d-1208cc67ba25" />
+
+The following is from ``synth_check.txt``
+
+<img width="3978" height="512" alt="synth_check" src="https://github.com/user-attachments/assets/0c8c4fe3-8159-4486-8f82-4bb4e0424b83" />
+
+Now the following picture is from ``Synth_stat`` file
+
+<img width="3978" height="2510" alt="synth_stat" src="https://github.com/user-attachments/assets/30002dd2-f007-4d29-b3c6-e0b0d87bfb9d" />
+<img width="3978" height="2510" alt="synth_stat1" src="https://github.com/user-attachments/assets/615009e3-57b7-4128-895f-ae0061f6f9b3" />
+<img width="3978" height="2510" alt="synth_stat2" src="https://github.com/user-attachments/assets/9a33a719-e043-4172-8b97-4401e41738e2" />
+
+With this detailed analysis , we see that everything is set in place and is working fine and now we can directly go through the entire PNR flow unless we are stopped by any possible error.
 
 ### 2. Floorplan
 Here, the flow defines the die area, places the I/O pins, and positions our hard macros (PLL and DAC) according to the `macro.cfg`.
