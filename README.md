@@ -72,6 +72,9 @@ The flow cleverly separates the **design-specific files** (`src`) from the **pla
         * `sdc/`: The timing constraints for synthesis (`vsdbabysoc_synthesis.sdc`).
         * `macro.cfg` & `pin_order.cfg`: Files to guide the floorplanner.
 
+<img width="1815" height="753" alt="tree" src="https://github.com/user-attachments/assets/232b6095-878f-401a-825a-919f956a01b3" />
+
+
 ### The Most important File: `config.mk`
 
 This file, which I created inside `/flow/designs/sky130hd/vsdbabysoc/`, is the main "control panel" for the flow. It points to all the files we just organized and sets our design parameters.
