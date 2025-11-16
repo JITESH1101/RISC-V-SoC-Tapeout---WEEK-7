@@ -1,6 +1,6 @@
 # RISC-V-SoC-Tapeout---WEEK-7
 
-Welcome to my project repo! This isn't just a collection of files, but a log of my journey through **Week 7 of the tapeout program**. The main goal this week was to take a synthesized RISC-V SoC design, the `VsdBabySoC`, and run it through the entire physical design (PD) flow using the **OpenROAD-flow-scripts (ORFS)**.
+ The main goal this week was to take a synthesized RISC-V SoC design, the `VsdBabySoC`, and run it through the entire physical design (PD) flow using the **OpenROAD-flow-scripts (ORFS)**.
 
 This task was all about connecting the dots—seeing how the digital logic we write in Verilog (`RTL`) gets translated into a physical, routable layout (`GDSII`) ready for fabrication. It's where the theory of chip design meets the practical reality of layout, timing, and parasitic extraction.
 
@@ -70,7 +70,7 @@ The flow cleverly separates the **design-specific files** (`src`) from the **pla
         * `sdc/`: The timing constraints for synthesis (`vsdbabysoc_synthesis.sdc`).
         * `macro.cfg` & `pin_order.cfg`: Files to guide the floorplanner.
 
-### The "Magic" File: `config.mk`
+### The Most important File: `config.mk`
 
 This file, which I created inside `/flow/designs/sky130hd/vsdbabysoc/`, is the main "control panel" for the flow. It points to all the files we just organized and sets our design parameters.
 
@@ -174,7 +174,7 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_route
 
 ---
 
-## ⚡ Part 4: The Critical Deliverable — What is SPEF?
+## ⚡ Part 4: What is SPEF?
 
 The final step of the flow, and a key goal of this week, was to generate the **SPEF (Standard Parasitic Exchange Format)** file.
 
@@ -194,8 +194,4 @@ Without a SPEF file, you're just guessing. With it, you *know*.
 
 ## ✅ Conclusion: Week 7 Complete!
 
-This week was a huge success. I was able to run the entire OpenROAD flow on the `BabySoC` design, starting from setup and configuration all the way to a fully routed layout.
-
-Most importantly, I successfully generated the post-route SPEF file and now have a solid understanding of *why* it's one of the most critical handoffs in the entire ASIC flow. It's the bridge between the physical layout and the final timing signoff.
-
-With this Week 7 is done and Week 8 is coming soon!
+The BabySoC physical design flow for Week 7 is complete. The OpenROAD-flow-scripts environment was configured, and the chip was successfully processed through synthesis, floorplanning, placement, CTS, and routing. The primary objective was met with the generation of the post-route SPEF file, capturing the real parasitic data essential for signoff-level timing analysis. This concludes the tasks for Week 7, with Week 8 to follow.
